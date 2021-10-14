@@ -18,3 +18,8 @@ int menu() {
 	cout << "" << endl;
 	return inputInt();
 }
+
+ostream& manip(ostream& stream) {
+	//
+	return stream;
+}

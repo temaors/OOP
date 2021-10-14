@@ -1,9 +1,9 @@
-#include "lab2.h"
+#include "Visitor.h"
 
 int main()
 {
-    setlocale(LC_ALL, "");
-    system("chcp 1251");
+    SetConsoleOutputCP(1251);
+    SetConsoleCP(1251);
     int choice;
     while (true) {
         switch (menu())

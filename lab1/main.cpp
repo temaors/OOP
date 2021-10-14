@@ -7,8 +7,9 @@
 
 int main()
 { 
-	Matrix matrix(5,5);
 	SetConsoleOutputCP(1251);
+	SetConsoleCP(1251);
+	Matrix matrix(5,5);
 	cout << "Введите размеры матрицы" << endl;
 	cout << "При вводе (0,0) будет использоваться конструктор по умолчанию" << endl;
 	int x, y;

@@ -108,7 +108,7 @@ void Matrix::CreateFloatMatrix(int x, int y) {
 float randFloatNumber() {
 	srand(2);
 	float num;
-	int maxNum = INT_MAX;
+	int maxNum = 100;
 	for (int i = 0; i < 50; i++)
 	{
 		num = static_cast <float>(rand()) / (static_cast <float>(RAND_MAX / maxNum));
