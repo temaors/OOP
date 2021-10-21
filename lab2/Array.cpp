@@ -1,6 +1,7 @@
 #include "Array.h"
 
-Array::Array(int x, int y) {
+Array::Array(int x, int y)
+{
 	this->x = x;
 	this->y = y;
 	system("cls");
@@ -16,20 +17,18 @@ Array::~Array() {
 	delete[] floatArr;
 }
 
-ostream& spacefornumber(ostream& stream) {
-	cout << setprecision(5) << setw(8);
+ostream& spacefornumber(ostream& stream)
+{
+	cout << /*setprecision(5) << */ setw(10);
 	return stream;
 }
 
 float randFloatNumber() {
-	srand(2);
+	srand(time(0));
 	float num;
-	int maxNum = 100;
-	for (int i = 0; i < 50; i++)
-	{
-		num = static_cast <float>(rand()) / (static_cast <float>(RAND_MAX / maxNum));
-		cout << setprecision(10) << num << endl;
-	}
+	int a = 100;
+	num = (float(rand()) / float((RAND_MAX)) * a);
+	//cout << setprecision(10) << num << endl;
 	return num;
 }
 
@@ -47,17 +46,20 @@ int inputInt() {
 float inputFloat() {
 	cout << "Введите число float" << endl;
 	float num;
-	while (!scanf_s("%f", &num)) {
+	while (!scanf_s("%f", &num))
+	{
 		system("cls");
 		cout << "Введите ЧИСЛО" << endl;
 	}
 	return num;
 }
 
-void Array::CreateArray(int x, int y) {//
+void Array::CreateArray(int x, int y)
+{//
 	srand(time(0));
 	arr = new int* [x];
-	for (int i = 0; i < x; i++) {
+	for (int i = 0; i < x; i++) 
+	{
 		arr[i] = new int[y];
 	}
 	for (int i = 0; i < x; i++)
@@ -69,7 +71,8 @@ void Array::CreateArray(int x, int y) {//
 	}
 }
 
-void Array::CreateArrayManually(int x, int y) {
+void Array::CreateArrayManually(int x, int y)
+{
 	arr = new int* [x];
 	for (int i = 0; i < x; i++) {
 		arr[i] = new int[y];
@@ -83,7 +86,8 @@ void Array::CreateArrayManually(int x, int y) {
 	}
 }
 
-void Array::CreateFloatArray(int x, int y) {
+void Array::CreateFloatArray(int x, int y) 
+{
 	floatArr = new float* [x];
 	for (int i = 0; i < x; i++) {
 		floatArr[i] = new float[y];
@@ -97,7 +101,8 @@ void Array::CreateFloatArray(int x, int y) {
 	}
 }
 
-void Array::CreateFloatArrayManually(int x, int y) {
+void Array::CreateFloatArrayManually(int x, int y) 
+{
 	floatArr = new float* [x];
 	for (int i = 0; i < x; i++) {
 		floatArr[i] = new float[y];
@@ -111,8 +116,9 @@ void Array::CreateFloatArrayManually(int x, int y) {
 	}
 }
 
-void Array::newArray() {
-	cout << "Создать массив с с дробными или целыми числами(1-FLOAT||2-INT)" << endl;
+void Array::newArray() 
+{
+	cout << "Создать массив с дробными или целыми числами(1-FLOAT||2-INT)" << endl;
 	int c1 = -1;
 	while (c1 != 1 && c1 != 2) {
 		c1 = inputInt();
@@ -146,7 +152,8 @@ void Array::newArray() {
 	}
 }
 
-void Array::minElement() {
+void Array::minElement()
+{
 	float max = FLT_MAX;
 	int sum = 0;
 	for (int i = 0; i < x; i++)
@@ -178,18 +185,21 @@ void Array::maxElement() {
 	cout << "Сумма номеров максимального элемента матрицы равна:" << sum << endl;
 }
 
-void Array::maxElementMultiplyOfTwo() {
+void Array::maxElementMultiplyOfTwo() 
+{
 	float min = FLT_MIN;
 	for (int i = 0; i < x; i++)
 	{
 		for (int j = 0; j < y; j++)
 		{
-			if (arr[i][j] % 2 == 0 && arr[i][j]>min) {
+			if (arr[i][j] % 2 == 0 && arr[i][j]>min)
+			{
 				min = arr[i][j];
 			}
 		}
 	}
-	if (min == FLT_MIN) {
+	if (min == FLT_MIN) 
+	{
 		cout << "Числа кратные 2 остутствуют в матрице" << endl;
 	}
 	else {
@@ -208,7 +218,8 @@ void Array::printMatrix() {
 	}
 }
 
-int menu() {
+int menu() 
+{
 	cout << "1)Вывод массива в консоль" << endl;
 	cout << "2)Сумма номеров минимального элемента массива" << endl;
 	cout << "3)Сумма номеров максимального элемента массива" << endl;
