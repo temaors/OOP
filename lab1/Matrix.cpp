@@ -69,18 +69,25 @@ void Matrix::newMatrix() {
 }
 
 Matrix::~Matrix() {
+	for (int i = 0; i < x; i++)
+	{
+		delete[] matrix[i];
+	}
 	delete[] matrix;
 }
 
-//Matrix::Matrix(const Matrix& obj) {
-
-//}
+Matrix::Matrix(const Matrix& obj) {
+	this->x = obj.x;
+	this->y = obj.y;
+	this->matrix = new int* [obj.x];
+	this->matrix = obj.matrix;
+}
 
 void Matrix::CreateMatrix(int x, int y) {
-	srand(2);
+	srand(time(0));
 	matrix = new int* [x];
 	for (int i = 0; i < x; i++) {
-		matrix[i] = new int[i + 1];
+		matrix[i] = new int[y];
 	}
 	for (int i = 0; i < x; i++)
 	{
@@ -94,7 +101,7 @@ void Matrix::CreateMatrix(int x, int y) {
 void Matrix::CreateFloatMatrix(int x, int y) {
 	floatMatrix = new float* [x];
 	for (int i = 0; i < x; i++) {
-		floatMatrix[i] = new float[i + 1];
+		floatMatrix[i] = new float[y];
 	}
 	for (int i = 0; i < x; i++)
 	{
@@ -106,7 +113,7 @@ void Matrix::CreateFloatMatrix(int x, int y) {
 }
 
 float randFloatNumber() {
-	srand(2);
+	srand(time(0));
 	float num;
 	int maxNum = 100;
 	for (int i = 0; i < 50; i++)
@@ -120,7 +127,7 @@ float randFloatNumber() {
 void Matrix::CreateMatrixManually(int x, int y) {
 	matrix = new int* [x];
 	for (int i = 0; i < x; i++) {
-		matrix[i] = new int[i + 1];
+		matrix[i] = new int[y];
 	}
 	for (int i = 0; i < x; i++)
 	{
@@ -134,7 +141,7 @@ void Matrix::CreateMatrixManually(int x, int y) {
 void Matrix::CreateFloatMatrixManually(int x, int y) {
 	floatMatrix = new float* [x];
 	for (int i = 0; i < x; i++) {
-		floatMatrix[i] = new float[i + 1];
+		floatMatrix[i] = new float[y];
 	}
 	for (int i = 0; i < x; i++)
 	{
@@ -194,22 +201,24 @@ void Matrix::MaxNumber() {
 
 int menu() {
 	cout << "1)Вывод матрицы" << endl;
-	cout << "2)Вывод максимального числа выше главной диагонали" << endl;
+	cout << "2)Вывод максимального числа выше главной диагонали" << endl; // ниже
 	cout << "3)Вывод миниимального числа ниже главной диагонали" << endl;
 	cout << "4)Ввод данных в файл" << endl;
-	cout << "5)Выход из программы" << endl;
+	cout << "5)Создание новой матрицы" << endl;
+	cout << "6)Выход из программы" << endl;
 	return inputInt();
 }
 
-void FileInput(int** matrix) {
+void FileInput(Matrix ob) {
 	ofstream fout("test1.txt");
 	fout << "Работа с файлами в С++";
-	for (int i = 0; i < 10; i++)
+	for (int i = 0; i < ob.x; i++)
 	{
-		for (int j = 0; j < 10; j++)
+		for (int j = 0; j < ob.y; j++)
 		{
-			fout << "Hello" << endl;
+			fout << " " << ob.matrix[i][j];
 		}
+		fout << endl;
 	}
 	fout.close();
 	system("pause");

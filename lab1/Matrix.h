@@ -7,21 +7,20 @@ using namespace std;
 
 class Matrix
 {
+public:
 	int x;
 	int y;
-	float floatX;
-	float floatY;
 	float** floatMatrix;
 	int** matrix;
-public:
 	Matrix();
 	Matrix(int, int);
-	//Matrix(const Matrix&);
+	Matrix(const Matrix&);
 	~Matrix();
 	void Print();
 	void MinNumber();
 	void MaxNumber();
 	void newMatrix();
+private:
 	void CreateMatrix(int, int);
 	void CreateFloatMatrix(int, int);
 	void CreateMatrixManually(int, int);
@@ -30,6 +29,6 @@ public:
 
 int inputInt();
 float inputFloat();
-void FileInput(int**);
+void FileInput(Matrix);
 int menu();
 float randFloatNumber();

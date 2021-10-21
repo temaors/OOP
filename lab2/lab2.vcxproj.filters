@@ -18,18 +18,12 @@
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="MedicalCenter.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Visitor.cpp">
+    <ClCompile Include="Array.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="MedicalCenter.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="VIsitor.h">
+    <ClInclude Include="Array.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
