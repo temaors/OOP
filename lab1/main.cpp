@@ -9,7 +9,8 @@ int main(){
 	x = abs(inputInt());
 	y = abs(inputInt());
 	if (x == 0 && y == 0) {
-		Matrix matrix; 
+		Matrix matrix;
+		Matrix copyMatrix(matrix);
 		while (true) {
 			cout << "Выберите пункт" << endl;
 			switch (menu()) {
@@ -22,12 +23,8 @@ int main(){
 			case 3:
 				matrix.MinNumber();
 				break;
-			case 4: {
-				Matrix copyMatrix(matrix);
+			case 4: 
 				FileInput(copyMatrix);
-				break; }
-			case 5:
-				cout << "Hello" << endl;
 				break;
 			case 6:
 				return 0;
@@ -39,6 +36,7 @@ int main(){
 	}
 	else {
 		Matrix matrix(x, y);
+		Matrix copyMatrix(matrix);
 		while (true) {
 			cout << "Выберите пункт" << endl;
 			switch (menu()) {
@@ -51,12 +49,8 @@ int main(){
 			case 3:
 				matrix.MinNumber();
 				break;
-			case 4: {
-				Matrix copyMatrix(matrix);
+			case 4: 
 				FileInput(copyMatrix);
-				break; }
-			case 5:
-				cout << "Hello" << endl;
 				break;
 			case 6:
 				return 0;

@@ -14,22 +14,12 @@ Array::~Array() {
 		delete[] arr[i];
 	}
 	delete[] arr;
-	delete[] floatArr;
 }
 
-ostream& spacefornumber(ostream& stream)
+ostream& space(ostream& stream)
 {
-	cout << /*setprecision(5) << */ setw(10);
+	cout << setprecision(5) << setw(10);
 	return stream;
-}
-
-float randFloatNumber() {
-	srand(time(0));
-	float num;
-	int a = 100;
-	num = (float(rand()) / float((RAND_MAX)) * a);
-	//cout << setprecision(10) << num << endl;
-	return num;
 }
 
 int inputInt() {
@@ -43,22 +33,11 @@ int inputInt() {
 	return num;
 }
 
-float inputFloat() {
-	cout << "Введите число float" << endl;
-	float num;
-	while (!scanf_s("%f", &num))
-	{
-		system("cls");
-		cout << "Введите ЧИСЛО" << endl;
-	}
-	return num;
-}
-
-void Array::CreateArray(int x, int y)
-{//
+void Array::CreateArray()
+{
 	srand(time(0));
 	arr = new int* [x];
-	for (int i = 0; i < x; i++) 
+	for (int i = 0; i < x; i++)
 	{
 		arr[i] = new int[y];
 	}
@@ -66,95 +45,45 @@ void Array::CreateArray(int x, int y)
 	{
 		for (int j = 0; j < y; j++)
 		{
-			arr[i][j] = rand() % 100 - 1;
+			arr[i][j] = rand() % 100 + 1;
 		}
 	}
 }
 
-void Array::CreateArrayManually(int x, int y)
+void Array::CreateArrayManually()
 {
 	arr = new int* [x];
-	for (int i = 0; i < x; i++) {
+	for (int i = 0; i < x; i++)
+	{
 		arr[i] = new int[y];
 	}
 	for (int i = 0; i < x; i++)
 	{
 		for (int j = 0; j < y; j++)
 		{
-			arr[i][j] = inputInt();
-		}
-	}
-}
-
-void Array::CreateFloatArray(int x, int y) 
-{
-	floatArr = new float* [x];
-	for (int i = 0; i < x; i++) {
-		floatArr[i] = new float[y];
-	}
-	for (int i = 0; i < x; i++)
-	{
-		for (int j = 0; j < y; j++)
-		{
-			floatArr[i][j] = randFloatNumber();
-		}
-	}
-}
-
-void Array::CreateFloatArrayManually(int x, int y) 
-{
-	floatArr = new float* [x];
-	for (int i = 0; i < x; i++) {
-		floatArr[i] = new float[y];
-	}
-	for (int i = 0; i < x; i++)
-	{
-		for (int j = 0; j < y; j++)
-		{
-			floatArr[i][j] = inputFloat();
+			arr[i][j]=inputInt();
 		}
 	}
 }
 
 void Array::newArray() 
 {
-	cout << "Создать массив с дробными или целыми числами(1-FLOAT||2-INT)" << endl;
-	int c1 = -1;
-	while (c1 != 1 && c1 != 2) {
-		c1 = inputInt();
-	}
-	if (c1 == 1) {
-		system("cls");
-		cout << "Создать массив с рандомными числами?(1-ДА||2-НЕТ)" << endl;
-		int ch1 = 0;
-		while (ch1 != 1 && ch1 != 2) {
-			ch1 = inputInt();
-		}
-		if (ch1 == 1) {
-			CreateFloatArray(x, y);
-		}
-		else {
-			CreateFloatArrayManually(x, y);
-		}
-	}
-	else {
 		cout << "Создать массив с рандомными числами?(1-ДА||2-НЕТ)" << endl;
 		int choice = 0;
 		while (choice != 1 && choice != 2) {
 			choice = inputInt();
 		}
 		if (choice == 1) {
-			CreateArray(x, y);
+			CreateArray();
 		}
 		else {
-			CreateArrayManually(x, y);
+			CreateArrayManually();
 		}
-	}
 }
 
 void Array::minElement()
 {
-	float max = FLT_MAX;
+	int max = INT_MAX;
 	int sum = 0;
 	for (int i = 0; i < x; i++)
 	{
@@ -170,7 +99,7 @@ void Array::minElement()
 }
 
 void Array::maxElement() {
-	float min = FLT_MIN;
+	int min = INT_MIN;
 	int sum = 0;
 	for (int i = 0; i < x; i++)
 	{
@@ -187,23 +116,23 @@ void Array::maxElement() {
 
 void Array::maxElementMultiplyOfTwo() 
 {
-	float min = FLT_MIN;
+	int max = -3;
 	for (int i = 0; i < x; i++)
 	{
 		for (int j = 0; j < y; j++)
 		{
-			if (arr[i][j] % 2 == 0 && arr[i][j]>min)
+			if (arr[i][j] % 2 == 0 && arr[i][j]>max)
 			{
-				min = arr[i][j];
+				max = arr[i][j];
 			}
 		}
 	}
-	if (min == FLT_MIN) 
+	if (max == -3) 
 	{
 		cout << "Числа кратные 2 остутствуют в матрице" << endl;
 	}
 	else {
-		cout << "Максимальный элемент матрицы кратый двум равен: " << min << endl;
+		cout << "Максимальный элемент матрицы кратый двум равен: " << max << endl;
 	}
 }
 
@@ -212,7 +141,7 @@ void Array::printMatrix() {
 	{
 		for (int j = 0; j < y; j++)
 		{
-			cout << spacefornumber << arr[i][j];
+			cout << space << arr[i][j];
 		}
 		cout << endl;
 	}
@@ -220,6 +149,8 @@ void Array::printMatrix() {
 
 int menu() 
 {
+	system("pause");
+	system("cls");
 	cout << "1)Вывод массива в консоль" << endl;
 	cout << "2)Сумма номеров минимального элемента массива" << endl;
 	cout << "3)Сумма номеров максимального элемента массива" << endl;

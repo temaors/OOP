@@ -11,7 +11,14 @@ int main()
         int x, y;
         x = abs(inputInt());
         y = abs(inputInt());
-        Array myarray(x, y);
+        int choice = -1;
+        while (choice != 1 && choice != 2) {
+            cout << "Создать массив для работы с числами int || float(1-INT||2-FLOAT)" << endl;
+            choice = inputInt();
+            system("cls");
+        }
+        if (choice == 1) {
+            Array myarray(x, y);
             while (cycle) {
                 switch (menu())
                 {
@@ -35,7 +42,34 @@ int main()
                     return 0;
                 default:
                     cout << "Ошибка." << endl;
-                break;
+                    break;
+                }
+            }
+        }
+        else {
+            FloatArray array(x,y);
+            while (cycle) {
+                switch (floatmenu())
+                {
+                case 1:
+                    array.printMatrix();
+                    break;
+                case 2:
+                    array.minElement();
+                    break;
+                case 3:
+                    array.maxElement();
+                    break;
+                case 4:
+                    cycle = false;
+                    system("pause");
+                    break;
+                case 5:
+                    return 0;
+                default:
+                    cout << "Ошибка." << endl;
+                    break;
+                }
             }
         }
     }

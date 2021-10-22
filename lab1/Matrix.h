@@ -10,7 +10,6 @@ class Matrix
 public:
 	int x;
 	int y;
-	float** floatMatrix;
 	int** matrix;
 	Matrix();
 	Matrix(int, int);
@@ -21,14 +20,10 @@ public:
 	void MaxNumber();
 	void newMatrix();
 private:
-	void CreateMatrix(int, int);
-	void CreateFloatMatrix(int, int);
-	void CreateMatrixManually(int, int);
-	void CreateFloatMatrixManually(int, int);
+	void CreateMatrix();
+	void CreateMatrixManually();
 };
 
 int inputInt();
-float inputFloat();
 void FileInput(Matrix);
 int menu();
-float randFloatNumber();

@@ -10,7 +10,6 @@ public:
 	int x;
 	int y;
 	int** arr;
-	float** floatArr;
 	Array(int, int);
 	~Array();
 	void newArray();
@@ -19,14 +18,28 @@ public:
 	void maxElementMultiplyOfTwo();
 	void printMatrix();
 private:
-	void CreateArray(int, int);
-	void CreateArrayManually(int, int);
-	void CreateFloatArray(int, int);
-	void CreateFloatArrayManually(int, int);
+	void CreateArray();
+	void CreateArrayManually();
+};
+
+class FloatArray {
+public:
+	int x, y;
+	float** floatArr;
+	FloatArray(int, int);
+	~FloatArray();
+	void newFloatArray();
+	void maxElement();
+	void minElement();
+	void printMatrix();
+private:
+	void CreateFloatArray();
+	void CreateFloatArrayManually();
 };
 
 int menu();
+int floatmenu();
 int inputInt();
 float inputFloat();
 float randFloatNumber();
-ostream& tableOut(ostream&);
+ostream& space(ostream&);
