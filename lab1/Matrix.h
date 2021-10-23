@@ -25,5 +25,5 @@ private:
 };
 
 int inputInt();
-void FileInput(Matrix);
+void FileInput(const Matrix&);
 int menu();

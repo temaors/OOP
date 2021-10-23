@@ -36,7 +36,6 @@ int main(){
 	}
 	else {
 		Matrix matrix(x, y);
-		Matrix copyMatrix(matrix);
 		while (true) {
 			cout << "Выберите пункт" << endl;
 			switch (menu()) {
@@ -49,9 +48,11 @@ int main(){
 			case 3:
 				matrix.MinNumber();
 				break;
-			case 4: 
+			case 4: {
+				Matrix copyMatrix(matrix);
 				FileInput(copyMatrix);
-				break;
+				}
+				  break;
 			case 6:
 				return 0;
 			default:

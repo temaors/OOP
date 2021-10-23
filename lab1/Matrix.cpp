@@ -47,10 +47,14 @@ Matrix::~Matrix() {
 }
 
 Matrix::Matrix(const Matrix& obj) {
-	this->x = obj.x;
-	this->y = obj.y;
-	this->matrix = new int* [obj.x];
-	this->matrix = obj.matrix;
+	x = obj.x;
+	y = obj.y;
+	matrix = new int* [obj.x];
+	for (int i = 0; i < obj.x; i++)
+	{
+		matrix[i] = new int[obj.y];
+	}
+	matrix = obj.matrix;
 }
 
 void Matrix::CreateMatrix() {
@@ -137,7 +141,7 @@ int menu() {
 	return inputInt();
 }
 
-void FileInput(Matrix ob) {
+void FileInput(const Matrix &ob) {
 	ofstream fout("test1.txt");
 	for (int i = 0; i < ob.x; i++)
 	{

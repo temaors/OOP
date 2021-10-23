@@ -2,7 +2,8 @@
 #include <Windows.h>
 #include <iomanip>
 #include <ctime>
-
+ //& перемножение 
+ //+ сложение
 using namespace std;
 
 class Array {
@@ -10,19 +11,18 @@ public:
 	int x;
 	int y;
 	int** arr;
-	float** floatArr;
+	Array();
 	Array(int, int);
 	~Array();
-	void printMatrix();
+	Array(const Array&);
+	friend void print(const Array&);
+	void newArray();
+	void operator+(const Array&);
+	void operator&(const Array&);
 private:
-	void CreateArray(int, int);
-	void CreateArrayManually(int, int);
-	void CreateFloatArray(int, int);
-	void CreateFloatArrayManually(int, int);
+	void CreateArray();
+	void CreateArrayManually();
 };
 
 int menu();
 int inputInt();
-float inputFloat();
-float randFloatNumber();
-ostream& tableOut(ostream&);
