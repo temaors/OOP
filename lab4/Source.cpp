@@ -3,7 +3,6 @@ Shape::Shape(int n) {
 	sideLength = n;
 }
 Triangle::Triangle(){
-	//sides = 3;
 }
 int menu() {
 	cout << "" << endl;
