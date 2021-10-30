@@ -71,30 +71,38 @@ void Array::newArray() {
 		CreateArrayManually();
 }
 
-void Array::operator+(const Array &obj) {
-	int sum = 0;
+int** Array::operator+(const Array& obj)
+{
+	int** result = new int* [obj.x];
+	for (int i = 0; i < obj.x; i++)
+	{
+		result[i] = new int[obj.y];
+	}
 	for (int i = 0; i < obj.x; i++)
 	{
 		for (int j = 0; j < obj.y; j++)
 		{
-			sum = this->arr[i][j] + obj.arr[i][j];
-			cout << setw(5) << sum;
+			result[i][j] = this->arr[i][j] + obj.arr[i][j];
 		}
-		cout << endl;
 	}
+	return result;
 }
 
-void Array::operator&(const Array &obj) {
-	int sum = 0;
+int** Array::operator&(const Array& obj)
+{
+	int** result = new int* [obj.x];
+	for (int i = 0; i < obj.x; i++)
+	{
+		result[i] = new int[obj.y];
+	}
 	for (int i = 0; i < obj.x; i++)
 	{
 		for (int j = 0; j < obj.y; j++)
 		{
-			sum = this->arr[i][j] * obj.arr[i][j];
-			cout << setw(7) << sum;
+			result[i][j] = this->arr[i][j] * obj.arr[i][j];
 		}
-		cout << endl;
 	}
+	return result;
 }
 
 int menu() {
@@ -119,11 +127,22 @@ int inputInt() {
 void print(const Array &obj)
 {
 	for (int i = 0; i < obj.x; i++)
+	{
+		for (int j = 0; j < obj.y; j++)
 		{
-			for (int j = 0; j < obj.y; j++)
-			{
-				cout << setw(5) << obj.arr[i][j];
-			}
-			cout << endl;
+			cout << setw(5) << obj.arr[i][j];
 		}
+		cout << endl;
+	}
+}
+
+void printResult(int** matrix, int x) {
+	for (int i = 0; i < x; i++)
+	{
+		for (int j = 0; j < x; j++)
+		{
+			cout << setw(6) << matrix[i][j];
+		}
+		cout << endl;
+	}
 }

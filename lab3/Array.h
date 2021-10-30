@@ -2,8 +2,7 @@
 #include <Windows.h>
 #include <iomanip>
 #include <ctime>
- //& перемножение 
- //+ сложение
+
 using namespace std;
 
 class Array {
@@ -17,8 +16,8 @@ public:
 	Array(const Array&);
 	friend void print(const Array&);
 	void newArray();
-	void operator+(const Array&);
-	void operator&(const Array&);
+	int** operator+(const Array&);
+	int** operator&(const Array&);
 private:
 	void CreateArray();
 	void CreateArrayManually();
@@ -26,3 +25,4 @@ private:
 
 int menu();
 int inputInt();
+void printResult(int**, int);

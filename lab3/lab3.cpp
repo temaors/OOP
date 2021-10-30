@@ -9,6 +9,11 @@ int main() {
 		cout << "¬ведите размеры второй матрицы" << endl;
 		int x = inputInt();
 		int y = inputInt();
+		int **resultMatrix = new int*[x];
+		for (int i = 0; i < x; i++)
+		{
+			resultMatrix[i] = new int[y];
+		}
 		Array array2(x, y);
 		while (cycle) {
 			switch (menu())
@@ -18,7 +23,8 @@ int main() {
 				cout << "+" << endl;
 				print(array2);
 				cout << "=" << endl;
-				array1 + array2;
+				resultMatrix = array1 + array2;
+				printResult(resultMatrix, x);
 				system("pause");
 				system("cls");
 				break;
@@ -27,14 +33,25 @@ int main() {
 				cout << "*" << endl;
 				print(array2);
 				cout << "=" << endl;
-				array1 & array2;
+				resultMatrix = array1 & array2;
+				printResult(resultMatrix, x);
 				system("pause");
 				system("cls");
 				break;
 			case 3:
 				cycle = false;
+				for (int i = 0; i < x; i++)
+				{
+					delete[] resultMatrix[i];
+				}
+				delete[] resultMatrix;
 				break;
-			case 5:
+			case 4:
+				for (int i = 0; i < x; i++)
+				{
+					delete[] resultMatrix[i];
+				}
+				delete[] resultMatrix;
 				return 0;
 			default:
 				cout << "ќшибка" << endl;
