@@ -1,8 +1,9 @@
 #include "Array.h"
 
 int main() {
-	SetConsoleOutputCP(1251);
-	SetConsoleCP(1251);
+	/*SetConsoleOutputCP(1251);
+	SetConsoleCP(1251);*/
+	setlocale(LC_ALL, "");
 	while (true) {
 		bool cycle = true;
 		Array array1;

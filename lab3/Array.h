@@ -1,7 +1,9 @@
+//#pragma execution_character_set("utf-8")
 #include <iostream>
 #include <Windows.h>
 #include <iomanip>
 #include <ctime>
+#include <locale.h>
 
 using namespace std;
 
