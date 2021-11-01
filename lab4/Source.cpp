@@ -1,16 +1,26 @@
 #include "Header.h"
-Shape::Shape(int n) {
-	sideLength = n;
+
+void Shape::getLenghtofSides() {
+	int x = inputInt();
+	sideLength = x;
 }
-Triangle::Triangle(){
+
+Circle::Circle() {
+	sides = 1;
+	cout << "¬ведите длину радиуса окружности" << endl;
+	getLenghtofSides();
 }
-int menu() {
-	cout << "" << endl;
-	cout << "" << endl;
-	cout << "" << endl;
-	cout << "" << endl;
-	int choice = inputInt();
-	return choice;
+
+Square::Square() {
+	sides = 4;
+	cout << "¬ведите длину стороны квадрата" << endl;
+	getLenghtofSides();
+}
+
+Triangle::Triangle() {
+	sides = 3;
+	cout << "¬ведите длину стороны треугольника" << endl;
+	getLenghtofSides();
 }
 
 int inputInt() {
@@ -24,5 +34,42 @@ int inputInt() {
 }
 
 void intersect(const Shape& obj1, const Shape& obj2) {
+	if (obj1.sides == 1 && obj2.sides == 3) {
+		if (obj1.sideLength<obj2.sideLength / sqrt(3) && obj1.sideLength>obj2.sideLength / (2 * sqrt(3))) {
+			cout << "“реугольник пересекаетс€ с окружностью" << endl;
+		}
+		else {
+			cout << "“реугольник не пересекаетс€ с окружностью" << endl;
+		}
+	}
+	else {
+		if (obj1.sides == 1 && obj2.sides == 4) {
+			if (obj1.sideLength > obj2.sideLength / 2 && obj1.sideLength < (sqrt(2)*obj2.sideLength) / 2) {
+				cout << " вадрат пересекаетс€ с окружностью" << endl;
+			}
+			else {
+				cout << " вадрат не пересекаетс€ с окружностью" << endl;
+			}
+		}
+		else {
+			if (obj1.sides == 3 && obj2.sides == 4) 
+			{
+				if ((obj1.sideLength * sqrt(3)) / 2 > obj2.sideLength * sqrt(2) && obj2.sideLength > ((2 * obj1.sideLength / sqrt(3)) + obj1.sideLength))
+					cout << " вадрат пересекаетс€ с треугольником" << endl;
+				else
+					cout << " вадрат не пересекатс€ с треугольником" << endl;
+			}
+		}
+	}
+}
 
+void inputFile(const Shape& obj1, const Shape& obj2, const Shape& obj3) {
+	ofstream fout("lab2.txt");
+	fout << "ƒлина стороны треугольника" << endl;
+	fout << obj1.sideLength << endl;
+	fout << "ƒлина стороны квадрата" << endl;
+	fout << obj2.sideLength << endl;
+	fout << "ƒлина радиуса окружности" << endl;
+	fout << obj3.sideLength << endl;
+	fout.close();
 }

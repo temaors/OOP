@@ -1,28 +1,33 @@
 #include <iostream>
-#include <ctime>
 #include <Windows.h>
+#include <math.h>
+#include <fstream>
 
 using namespace std;
 
 class Shape {
+public:
 	int sideLength;
 	int sides;
-	Shape(int);
+protected:
+	void getLenghtofSides();
 };
 
 class Triangle : public Shape {
+public:
 	Triangle();
-	~Triangle();
 };
 
 class Square : public Shape {
-	  
+public:
+	Square();
 };
 
 class Circle : public Shape {
-
+public:
+	Circle();
 }; 
 
-int menu();
 int inputInt();
 void intersect(const Shape&, const Shape&);
+void inputFile(const Shape&, const Shape&, const Shape&);
