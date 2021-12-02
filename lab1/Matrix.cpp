@@ -1,6 +1,7 @@
 #include "Matrix.h"
 
-int inputInt() {
+int inputInt() 
+{
 	cout << "Введите число int" << endl;
 	int num;
 	while (!scanf_s("%d", &num)) {
@@ -11,20 +12,23 @@ int inputInt() {
 }
 
 
-Matrix::Matrix() {
+Matrix::Matrix() 
+{
 	x = 4;
 	y = 4;
 	CreateMatrix();
 }
 
-Matrix::Matrix(int x, int y) {
+Matrix::Matrix(int x, int y) 
+{
 	this->x = x;
 	this->y = y;
 	system("cls");
 	newMatrix();
 }
 
-void Matrix::newMatrix() {
+void Matrix::newMatrix() 
+{
 		cout << "Создать матрицу с рандомными числами?(1-ДА||2-НЕТ)" << endl;
 		int choice = 0;
 		while (choice != 1 && choice != 2) {
@@ -38,7 +42,8 @@ void Matrix::newMatrix() {
 		}
 }
 
-Matrix::~Matrix() {
+Matrix::~Matrix() 
+{
 	for (int i = 0; i < x; i++)
 	{
 		delete[] matrix[i];
@@ -46,7 +51,8 @@ Matrix::~Matrix() {
 	delete[] matrix;
 }
 
-Matrix::Matrix(const Matrix& obj) {
+Matrix::Matrix(const Matrix& obj) 
+{
 	x = obj.x;
 	y = obj.y;
 	matrix = new int* [obj.x];
@@ -57,7 +63,8 @@ Matrix::Matrix(const Matrix& obj) {
 	matrix = obj.matrix;
 }
 
-void Matrix::CreateMatrix() {
+void Matrix::CreateMatrix() 
+{
 	srand(time(0));
 	matrix = new int* [x];
 	for (int i = 0; i < x; i++) {
@@ -72,7 +79,8 @@ void Matrix::CreateMatrix() {
 	}
 }
 
-void Matrix::CreateMatrixManually() {
+void Matrix::CreateMatrixManually() 
+{
 	matrix = new int* [x];
 	for (int i = 0; i < x; i++) {
 		matrix[i] = new int[y];
@@ -86,7 +94,8 @@ void Matrix::CreateMatrixManually() {
 	}
 }
 
-void Matrix::Print() {
+void Matrix::Print() 
+{
 	for (int i = 0; i < x; i++)
 	{
 		for (int j = 0; j < y; j++)
@@ -97,7 +106,8 @@ void Matrix::Print() {
 	}
 }
 
-void Matrix::MinNumber() {
+void Matrix::MinNumber() 
+{
 	int minNum = INT_MAX;
 	for (int i = 0; i < x; i++)
 	{
@@ -114,7 +124,8 @@ void Matrix::MinNumber() {
 	cout << "Минимальное число " << minNum << endl;
 }
 
-void Matrix::MaxNumber() {
+void Matrix::MaxNumber() 
+{
 	int maxNum = INT_MIN;
 	for (int i = 0; i < x; i++)
 	{
@@ -132,7 +143,8 @@ void Matrix::MaxNumber() {
 }
 
 
-int menu() {
+int menu() 
+{
 	cout << "1)Вывод матрицы" << endl;
 	cout << "2)Вывод максимального числа ниже главной диагонали" << endl;
 	cout << "3)Вывод миниимального числа выше главной диагонали" << endl;
@@ -141,7 +153,8 @@ int menu() {
 	return inputInt();
 }
 
-void FileInput(const Matrix &ob) {
+void FileInput(const Matrix &ob) 
+{
 	ofstream fout("test1.txt");
 	for (int i = 0; i < ob.x; i++)
 	{
